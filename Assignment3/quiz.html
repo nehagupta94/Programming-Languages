@@ -1,0 +1,234 @@
+
+<!DOCTYPE html> 
+<html> 
+  
+<head> 
+    <title> 
+        Simple Math Quiz
+    </title> 
+</head> 
+<script type="text/javascript">
+    var totalCount = 0;
+    var correct = 0;
+    var wrong = 0;
+</script>
+
+
+    
+    <h2> 
+        Simple Math Quiz
+    </h2> 
+  
+    <button onclick="intAdd()"> 
+        Integer Addition
+    </button>
+
+    <button onclick="intSub()"> 
+        Integer Subtraction
+    </button>
+    <br><br>
+
+    <button onclick="floatAdd()"> 
+        Float Addition
+    </button>
+
+    <button onclick="floatSub()"> 
+        Float Subtraction
+    </button>
+    <br><br>
+
+    <button onclick="complexAdd()"> 
+        Complex Addition
+    </button>
+
+    <button onclick="complexSub()"> 
+        Complex Subtraction
+    </button>
+    <br><br>
+
+    <button onclick="checkScore()">
+        Check Score
+    </button>
+    <button onclick="reset()">
+        Reset
+    </button>
+    <br>
+  
+    <script> 
+        function intAdd() { 
+            var int1 = generateInt();
+            var int2 = generateInt();
+            var doc = prompt(int1 + ' + ' + int2, 
+                ""); 
+            doc = doc.replace(/ +/g, "");
+            var qanswer = int1 + int2;
+            if(doc){
+              if(doc == qanswer){
+              correctAns();
+            }
+            else{
+              wrongAns();
+            }
+          }
+            
+        }
+
+        function generateInt(){
+          var minimum = 1;
+          var maximum = 10;
+          return Math.floor(Math.random() * 10) + 1;
+        }
+
+        function correctAns(){
+          totalCount++;
+          correct++;
+          alert("Correct Answer.\nTotal " + totalCount +"\nCorrect " + correct + "\nWrong " + wrong);
+        }
+
+        function wrongAns(){
+          totalCount++;
+          wrong++;
+          alert("Wrong Answer.\nTotal " + totalCount +"\nCorrect " + correct + "\nWrong " + wrong);
+        }
+
+        function intSub() { 
+            var int1 = generateInt();
+            var int2 = generateInt();
+            var doc = prompt(int1 + ' - ' + int2, 
+                ""); 
+            doc = doc.replace(/ +/g, "");
+            var qanswer = int1 - int2;
+            if(doc){
+              if(doc == qanswer){
+              correctAns();
+            }
+            else{
+              wrongAns();
+            }
+          }
+            
+        }
+
+        function generateFloat(){
+          var precision = 10;
+          return Math.floor(Math.random() * (10 * precision - 1 * precision) + 1 * precision) / (1*precision);
+        }
+
+        function floatAdd() { 
+            var int1 = generateFloat();
+            var int2 = generateFloat();
+            var doc = prompt(int1 + ' + ' + int2, 
+                "");
+            a = a.replace(/ +/g, "");
+            var qanswer = int1 - int2;
+
+            if(doc){
+              if(doc == qanswer){
+              correctAns();
+            }
+            else{
+              wrongAns();
+            }
+          }
+            
+        }
+
+        function floatSub() { 
+            var int1 = generateFloat();
+            var int2 = generateFloat();
+            var doc = prompt(int1 + ' - ' + int2, 
+                ""); 
+            doc = doc.replace(/ +/g, "");
+            var qanswer = int1 - int2;
+
+            if(doc){
+              if(doc == qanswer){
+              correctAns();
+            }
+            else{
+              wrongAns();
+            }
+          }
+
+            
+        }
+
+        function complexAdd() { 
+            var x1 = generateInt();
+            var x2 = generateInt();
+            var y1 = generateInt();
+            var y2 = generateInt();
+            var real = x1 + y1;
+            var imaginary = x2 + y2;
+            if(imaginary == 1){
+              var imanswer = "" + real + 'i';
+            }
+            var qanswer = "" + real + '+' + imaginary + 'i';
+            var doc = prompt('(' + x1 + '+' + x2 + 'i' + ')' + ' + ' + '(' + y1 + '+' + y2 +'i' + ')', 
+                "");
+            doc = doc.replace(/ +/g, "");
+
+            if(doc){
+              if(doc == qanswer || doc == imanswer){
+              correctAns();
+            }
+            else{
+              wrongAns();
+            }
+          }
+
+            
+        }
+
+        function complexSub() { 
+            var x1 = generateInt();
+            var x2 = generateInt();
+            var y1 = generateInt();
+            var y2 = generateInt();
+            var real = x1 - y1;
+            var imaginary = x2 - y2;
+            if(x2<y2){
+              var qnanswer = "" + real + imaginary + 'i';
+            }
+            if(real == 0){
+              var ranswer = "" + imaginary + 'i';
+            }
+            if(imaginary == 0){
+              var ianswer = "" + real;
+            }
+            if(imaginary == 1){
+              var imanswer = "" + real + 'i';
+            }
+            if(real == 0 && imaginary == 0){
+              var noanswer = "" + 0;
+            }
+            var qanswer = "" + real + '+' + imaginary + 'i';
+            var doc = prompt('(' + x1 + '+' + x2 +'i' + ')' + ' - ' + '(' + y1 + '+' + y2 +'i' + ')', 
+                "");
+            doc = doc.replace(/ +/g, "");
+
+            if(doc){
+              if(doc == qanswer || doc == qnanswer || doc == imanswer || doc == ranswer || doc == ianswer || noanswer){
+              correctAns();
+            }
+            else{
+              wrongAns();
+            }
+          }
+            
+        }
+
+        function checkScore() { 
+              alert("Total " + totalCount +"\nCorrect " + correct + "\nWrong " + wrong);
+        }
+
+        function reset() { 
+            totalCount = 0;
+            correct = 0;
+            wrong = 0;
+        }
+
+    </script> 
+</body> 
+  
+</html> 

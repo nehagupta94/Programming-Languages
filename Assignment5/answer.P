@@ -1,0 +1,23 @@
+deleteNList(0,L,Res):- Res = L.
+deleteNList(_,[],Res):- Res = [].
+deleteNList(N,L,Res):- deletehelp(L,N,N,Res).
+deletehelp([_|T],K,N,Res):- K==1, deletehelp(T,N,N,Res).
+deletehelp([H|T],K,N,[H|Res]):- K > 1,K1 is K-1,deletehelp(T,K1,N,Res).
+deletehelp([],_,_,Res):- Res = [].
+
+position(X, L, Res) :- positionhelp(X, 1, L, Res).
+positionhelp(_, _, [], []).
+positionhelp(X, P, [H|T], R) :- 
+(X == H -> P1 is P + 1, positionhelp(X, P1, T, R1), R = [P|R1];
+	P1 is P + 1, positionhelp(X, P1, T, R2), R = R2).
+
+maxodd([],0).
+maxodd([X],X).
+maxodd([X,_|Xs],Res) :-
+    maxodd(Xs,T), 
+    (   X > T ->   Res is X;
+    Res is T ).
+
+replace_first([],_,_,Res) :- Res = [].
+replace_first([X|T], X, Y, [Y|T]). 
+replace_first([H|T], X, Y, [H|Z]) :- replace_first(T, X, Y, Z).
